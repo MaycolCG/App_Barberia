@@ -1,10 +1,10 @@
 {
-    "name": "carro/app-salon_php_mvc_js_sass_fin",
-    "description": "App-Barberia",
+    "name": "carro/app_barberia",
+    "description": "App Barberia",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Carro\\AppSalonPhpMvcJsSassFin\\": "src/",
+            "Carro\\AppBarberia\\": "src/",
             "MVC\\" : "./",
             "Controllers\\" : "./controllers",
             "Model\\" : "./models"

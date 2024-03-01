@@ -15,7 +15,7 @@ class ComposerStaticInite1fc8940bdec700b4326bd7c39afe32d
         'C' => 
         array (
             'Controllers\\' => 12,
-            'Carro\\AppSalonPhpMvcJsSassFin\\' => 30,
+            'Carro\\AppBarberia\\' => 18,
         ),
     );
 
@@ -32,7 +32,7 @@ class ComposerStaticInite1fc8940bdec700b4326bd7c39afe32d
         array (
             0 => __DIR__ . '/../..' . '/controllers',
         ),
-        'Carro\\AppSalonPhpMvcJsSassFin\\' => 
+        'Carro\\AppBarberia\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

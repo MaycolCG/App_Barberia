@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'carro/app-salon_php_mvc_js_sass_fin',
+        'name' => 'carro/app_barberia',
         'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
         'reference' => null,
@@ -10,7 +10,7 @@
         'dev' => true,
     ),
     'versions' => array(
-        'carro/app-salon_php_mvc_js_sass_fin' => array(
+        'carro/app_barberia' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'reference' => null,

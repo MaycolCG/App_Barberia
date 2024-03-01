@@ -9,5 +9,5 @@ return array(
     'Model\\' => array($baseDir . '/models'),
     'MVC\\' => array($baseDir . '/'),
     'Controllers\\' => array($baseDir . '/controllers'),
-    'Carro\\AppSalonPhpMvcJsSassFin\\' => array($baseDir . '/src'),
+    'Carro\\AppBarberia\\' => array($baseDir . '/src'),
 );
