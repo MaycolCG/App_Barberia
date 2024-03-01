@@ -1,0 +1,19 @@
+{
+    "name": "carro/app-salon_php_mvc_js_sass_fin",
+    "description": "App-Barberia",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Carro\\AppSalonPhpMvcJsSassFin\\": "src/",
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maycol"
+        }
+    ],
+    "require": {}
+}
