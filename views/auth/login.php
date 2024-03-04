@@ -25,12 +25,9 @@
             name="password"
         />
     </div>
-</form>
     
-<div>
     <input type="submit" class="boton" value="Iniciar Sesión">
-</div>
-    
+</form>
 
 
 <div class="acciones">
