@@ -7,8 +7,9 @@
     display: block;
     margin-bottom: 2rem;
     text-align: center;
-    font-weight: v.$bold;
-    text-transform: uppercase;
+    //font-weight: v.$bold;
+    //text-transform: uppercase;
+    border-radius: 0.5rem;
 
     &.error {
         background-color: v.$rojo;
