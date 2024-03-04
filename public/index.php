@@ -30,7 +30,7 @@ $router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);
 $router->get('/mensaje', [LoginController::class, 'mensaje']);
 
 // AREA PRIVADA
-$router->get('/cita', [CitaController::class, 'index']);
+/*$router->get('/cita', [CitaController::class, 'index']);
 $router->get('/admin', [AdminController::class, 'index']);
 
 // API de Citas
@@ -44,7 +44,7 @@ $router->get('/servicios/crear', [ServicioController::class, 'crear']);
 $router->post('/servicios/crear', [ServicioController::class, 'crear']);
 $router->get('/servicios/actualizar', [ServicioController::class, 'actualizar']);
 $router->post('/servicios/actualizar', [ServicioController::class, 'actualizar']);
-$router->post('/servicios/eliminar', [ServicioController::class, 'eliminar']);
+$router->post('/servicios/eliminar', [ServicioController::class, 'eliminar']);*/
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

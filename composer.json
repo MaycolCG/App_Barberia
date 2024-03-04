@@ -1,22 +1,19 @@
 {
     "name": "carro/app_barberia",
-    "description": "App Barberia",
+    "description": "App_Barberia",
     "type": "project",
     "autoload": {
         "psr-4": {
             "Carro\\AppBarberia\\": "src/",
             "MVC\\" : "./",
             "Controllers\\" : "./controllers",
-            "Model\\" : "./models",
-            "Classes\\" : "./classes"
+            "Model\\" : "./models"
         }
     },
     "authors": [
         {
-            "name": "Maycol"
+            "name": "Grupo Sena"
         }
     ],
-    "require": {
-        "phpmailer/phpmailer": "^6.9"
-    }
+    "require": {}
 }
