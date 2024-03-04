@@ -26,7 +26,7 @@ class LoginController {
                     //Verificar el password
                     if( $usuario->comprobarPasswordAndVerificado($auth->password) ) {
                         // Autenticar el usuario
-                        session_start();
+                        /*session_start();
 
                         $_SESSION['id'] = $usuario->id;
                         $_SESSION['nombre'] = $usuario->nombre . " " . $usuario->apellido;
@@ -39,7 +39,7 @@ class LoginController {
                             header('Location: /admin');
                         } else {
                             header('Location: /cita');
-                        }
+                        }*/
                     }
                 } else {
                     Usuario::setAlerta('error', 'Usuario no encontrado');
@@ -62,12 +62,81 @@ class LoginController {
 
     public static function olvide(Router $router){        
         
-        $router->render('auth/olvide-password');
+        $alertas = [];
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $auth = new Usuario($_POST);
+            $alertas = $auth->validarEmail();
+
+            if(empty($alertas)) {
+                 $usuario = Usuario::where('email', $auth->email);
+
+                 if($usuario && $usuario->confirmado === "1") {
+                        
+                    // Generar un token
+                    $usuario->crearToken();
+                    $usuario->guardar();
+
+                    //  Enviar el email
+                    $email = new Email($usuario->email, $usuario->nombre, $usuario->apellido, $usuario->token);
+                    $email->enviarInstrucciones();
+
+                    // Alerta de exito
+                    Usuario::setAlerta('exito', 'Revisa tu email');
+                 } else {
+                     Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado');
+                     
+                 }
+            } 
+        }
+
+        $alertas = Usuario::getAlertas();
+
+        $router->render('auth/olvide-password', [
+            'alertas' => $alertas
+        ]);
     }
 
 
-    public static function recuperar(){
-        echo "Desde Recuperar";
+    public static function recuperar(Router $router){
+        
+        $alertas = [];
+        $error = false;
+        $token = s($_GET['token']);
+
+        // Buscar usuario por su token
+        $usuario = Usuario::where('token', $token);
+
+        if(empty($usuario)) {
+            Usuario::setAlerta('error', 'Token Inválido');
+            $error = true;
+        }
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            // Leer el nuevo password y guardarlo
+            $password = new Usuario($_POST);
+            $alertas = $password->validarPassword();
+
+            if(empty($alertas)) {
+                $usuario->password = null;
+
+                $usuario->password = $password->password;
+                $usuario->hashPassword();
+                $usuario->token = null;
+
+                $resultado = $usuario->guardar();
+                if($resultado) {
+                    header('Location: /');
+                }
+            }
+        }
+
+        $alertas = Usuario::getAlertas();
+        $router->render('auth/recuperar-password', [
+            'alertas' => $alertas, 
+            'error' => $error
+        ]);
     }
 
 
@@ -96,7 +165,7 @@ class LoginController {
                     $usuario->crearToken();
 
                     // Enviar el Email
-                    $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
+                    $email = new Email($usuario->email, $usuario->nombre, $usuario->apellido, $usuario->token);
                     $email->enviarConfirmacion();                    
 
                     // Crear el usuario
@@ -125,14 +194,14 @@ class LoginController {
         if(empty($usuario)){
 
             //Mostrar mensaje de error
-            Usuario::setAlerta('error', 'Token No Válido');
+            Usuario::setAlerta('error', 'Token Inválido');
         } else {
 
            // Modificar a usuario confirmado
            $usuario->confirmado = "1";
            $usuario->token = null;
            $usuario->guardar();
-            Usuario::setAlerta('exito', 'Cuenta Comprobada Correctamente');
+            Usuario::setAlerta('exito', 'Cuenta Confirmada Correctamente');
 
         }
 

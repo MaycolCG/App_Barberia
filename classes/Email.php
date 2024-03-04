@@ -8,13 +8,16 @@ class Email {
 
     public $email;
     public $nombre;
+    public $apellido;
     public $token;
     
-    public function __construct($email, $nombre, $token)
+    public function __construct($email, $nombre, $apellido, $token)
     {
         $this->email = $email;
         $this->nombre = $nombre;
+        $this->apellido = $apellido;
         $this->token = $token;
+
     }
 
     public function enviarConfirmacion() {
@@ -37,7 +40,7 @@ class Email {
          $mail->CharSet = 'UTF-8';
 
          $contenido = '<html>';
-         $contenido .= "<p><strong>Hola " . $this->email .  "</strong> Has Creado tu cuenta en KalimanBarber, solo debes confirmarla presionando el siguiente enlace</p>";
+         $contenido .= "<p>Hola<strong> " . $this->nombre . " " . $this->apellido .  "</strong> Has Creado tu cuenta en KalimanBarber, solo debes confirmarla presionando el siguiente enlace</p>";
          $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";        
          $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
          $contenido .= '</html>';
@@ -68,7 +71,7 @@ class Email {
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= "<p><strong>Hola " . $this->nombre .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace para hacerlo.</p>";
+        $contenido .= "<p>Hola<strong> " . $this->nombre . " " . $this->apellido .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace para hacerlo.</p>";
         $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Reestablecer Password</a>";        
         $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
