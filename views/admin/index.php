@@ -39,7 +39,7 @@
                     <p>Hora: <span><?php echo $cita->hora; ?></span></p>
                     <p>Cliente: <span><?php echo $cita->cliente; ?></span></p>
                     <p>Email: <span><?php echo $cita->email; ?></span></p>
-                    <p>Email: <span><?php echo $cita->telefono; ?></span></p>
+                    <p>Telefono: <span><?php echo $cita->telefono; ?></span></p>
 
                     <h3>Servicios</h3>
             <?php 
@@ -47,7 +47,7 @@
             } // Fin de IF 
                 $total += $cita->precio;
             ?>
-                    <p class="servicio"><?php echo $cita->servicio . " " . $cita->precio; ?></p>
+                    <p class="servicio"><?php echo $cita->servicio . ": " . $cita->precio; ?></p>
             
             <?php 
                 $actual = $cita->id;

@@ -114,7 +114,6 @@ class ActiveRecord {
    // Busca un registro por su id
    public static function find($id) {
        $query = "SELECT * FROM " . static::$tabla  ." WHERE id = $id";
-
        $resultado = self::consultarSQL($query);
        return array_shift( $resultado ) ;
    }

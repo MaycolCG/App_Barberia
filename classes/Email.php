@@ -25,11 +25,11 @@ class Email {
          // create a new object
          $mail = new PHPMailer();
          $mail->isSMTP();
-         $mail->Host = 'smtp.mailtrap.io';
+         $mail->Host = $_ENV['EMAIL_HOST'];
          $mail->SMTPAuth = true;
-         $mail->Port = 2525;
-         $mail->Username = '3a0485f2d5b78d';
-         $mail->Password = '6cf41eca06020e';
+         $mail->Port = $_ENV['EMAIL_PORT'];
+         $mail->Username = $_ENV['EMAIL_USER'];
+         $mail->Password = $_ENV['EMAIL_PASS'];
      
          $mail->setFrom('cuentas@KalimanBarber.com');
          $mail->addAddress('cuentas@KalimanBarber.com', 'KalimanBarber.com');
@@ -41,8 +41,8 @@ class Email {
 
          $contenido = '<html>';
          $contenido .= "<p>Hola<strong> " . $this->nombre . " " . $this->apellido .  "</strong> Has Creado tu cuenta en KalimanBarber, solo debes confirmarla presionando el siguiente enlace</p>";
-         $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";        
-         $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
+         $contenido .= "<p>Presiona aquí: <a href='" .  $_ENV['APP_URL']   . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";        
+         $contenido .= "<p>Si tú no solicitaste este cambio, puedes ignorar el mensaje</p>";
          $contenido .= '</html>';
          $mail->Body = $contenido;
 
@@ -56,11 +56,11 @@ class Email {
         // create a new object
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
+        $mail->Host = $_ENV['EMAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '3a0485f2d5b78d';
-        $mail->Password = '6cf41eca06020e';
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
     
         $mail->setFrom('cuentas@KalimanBarber.com');
         $mail->addAddress('cuentas@KalimanBarber.com', 'KalimanBarber.com');
@@ -72,7 +72,7 @@ class Email {
 
         $contenido = '<html>';
         $contenido .= "<p>Hola<strong> " . $this->nombre . " " . $this->apellido .  "</strong> Has solicitado reestablecer tu password, sigue el siguiente enlace para hacerlo.</p>";
-        $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Reestablecer Password</a>";        
+        $contenido .= "<p>Presiona aquí: <a href='" .  $_ENV['APP_URL']   . "/recuperar?token=" . $this->token . "'>Reestablecer Password</a>";        
         $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
         $contenido .= '</html>';
         $mail->Body = $contenido;
