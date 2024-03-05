@@ -12,13 +12,14 @@
         background-color: v.$azul;
         border: none;
         color: v.$blanco;
-        padding: 1rem;
+        padding: 0.8rem;
         display: block;
         width: 100%;
         margin-bottom: 1rem;
         text-transform: uppercase;
-        font-weight: v.$bold;
+        //font-weight: v.$bold;
         transition: background-color 300ms ease;
+        border-radius: 0.5rem;
 
         &:hover {
             cursor: pointer;

@@ -20,13 +20,13 @@
 
 @mixin boton($bgColor, $colorTexto) {
     background-color: $bgColor;
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     color: $colorTexto;
     margin-top: 1rem;
     font-size: 2rem;
     font-weight: 400;
     display: inline-block;
-    font-weight: 700;
+    //font-weight: 700;
     border: none;
     transition-property: background-color;
     transition-duration: .3s;

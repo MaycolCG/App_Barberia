@@ -24,9 +24,10 @@ class LoginController {
                 if($usuario) {
 
                     //Verificar el password
-                    if( $usuario->comprobarPasswordAndVerificado($auth->password) ) {
-                        // Autenticar el usuario
-                        /*session_start();
+                    if($usuario->comprobarPasswordAndVerificado($auth->password)){
+
+                       // Autenticar el usuario
+                       session_start();
 
                         $_SESSION['id'] = $usuario->id;
                         $_SESSION['nombre'] = $usuario->nombre . " " . $usuario->apellido;
@@ -39,8 +40,9 @@ class LoginController {
                             header('Location: /admin');
                         } else {
                             header('Location: /cita');
-                        }*/
+                        }
                     }
+                    
                 } else {
                     Usuario::setAlerta('error', 'Usuario no encontrado');
                 }
@@ -48,6 +50,8 @@ class LoginController {
             }
         }
         
+        $alertas = Usuario::getAlertas();
+
         $router->render('auth/login', [
             'alertas' => $alertas
         ]);      
@@ -135,7 +139,7 @@ class LoginController {
         $alertas = Usuario::getAlertas();
         $router->render('auth/recuperar-password', [
             'alertas' => $alertas, 
-            'error' => $error
+            'error' => $error,
         ]);
     }
 
