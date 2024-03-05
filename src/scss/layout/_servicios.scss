@@ -10,7 +10,7 @@
 
     .servicio {
         background-color: v.$blanco;
-        padding: 3rem;
+        padding: 1rem;
         border-radius: 1rem;
         transition-property: transform;
         transition-duration: 300ms;
@@ -20,6 +20,7 @@
             background-color: v.$azul;
             p {
                 color: v.$blanco;
+                
             }
         }
 
@@ -33,7 +34,7 @@
         }
         .precio-servicio {
             color: v.$azul;
-            font-weight: v.$bold;
+            //font-weight: v.$bold;
             font-size: 3rem;
             margin: 0;
         }
