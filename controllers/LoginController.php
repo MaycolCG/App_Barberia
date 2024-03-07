@@ -8,6 +8,15 @@ use Classes\Email;
 
 class LoginController {
 
+    public static function inicio(Router $router){
+
+
+
+
+        $router->render('auth/inicio');      
+        
+    }
+
     public static function login(Router $router){
 
         $alertas = [];

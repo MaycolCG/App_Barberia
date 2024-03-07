@@ -10,9 +10,14 @@ use Controllers\ServicioController;
 use MVC\Router;
 $router = new Router();
 
+//Inicio
+$router->get('/', [LoginController::class, 'inicio']);
+$router->post('/', [LoginController::class, 'inicio']);
+
+
 // Iniciar Sesión
-$router->get('/', [LoginController::class, 'login']);
-$router->post('/', [LoginController::class, 'login']);
+$router->get('/login', [LoginController::class, 'login']);
+$router->post('/login', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
 
 // Recuperar Password
